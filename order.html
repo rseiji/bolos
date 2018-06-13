@@ -9,7 +9,24 @@
     }
     </style>
   </head>
-  <body>
-    Oba! Vai ter bolo 🍰
+  <body id="body">
   </body>
+  <script type="text/javascript">
+
+const query = window.location.search.substr(1).split('&').reduce(
+  (acc, curr) => {
+    const item = curr.split('=');
+    acc[item[0]] = item[1];
+    return acc;
+  },
+
+{});
+
+document.body.innerHTML =
+  (query && query.code && query.code === '400') ?
+    `Sem bolo, pq ${decodeURI(query.message)} :sadpanda:`
+  :
+    'Oba! Vai ter bolo :happy-panda:'
+  ;
+  </script>
 </html>
